@@ -2,11 +2,16 @@ import React from 'react';
 import { BsCheck2All} from "react-icons/bs";
 import "./chat.css"
 import profile from "../../assets/bgimg.svg"
+import { useNavigate } from 'react-router-dom';
 
 
 const Chat = ({username,message,time,tick}) => {
+    const navigate = useNavigate();
+    const click = () =>{
+        navigate("/chatscreen")
+    }
   return (
-      <div className="chat_container">
+      <div className="chat_container" onClick={click} >
         <div className="user_img-name-msg">
             <img src={profile} alt="s" />
             <div className="user_name-msg">

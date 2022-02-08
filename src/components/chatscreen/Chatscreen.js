@@ -10,17 +10,40 @@ import {
 import { MdAttachFile } from "react-icons/md";
 import "./chatscreen.css";
 import profile from "../../assets/bgimg.svg";
+import { useNavigate } from "react-router-dom";
+
+
+
 
 const Chatscreen = () => {
+
+
+  const navigate = useNavigate();
   const today = new Date();
   const timing =
     today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  const [time, setTime] = useState(timing);
+  const [time] = useState(timing);
+  const [input, setInput] = useState("");
+
+
+  const sendMessage = (e) =>{
+    e.preventDefault();
+    setInput("");
+  }
+
+  
+
+
+
   return (
     <div className="chatscreen_container">
       <div className="chatscreen_topbar">
         <div className="chatscreen_back-btn chatscreen_btns">
-          <BiArrowBack />
+          <BiArrowBack 
+          onClick={() =>{
+            navigate('/chatlist')
+          }}
+          />
         </div>
 
         <div className="chatscreen_photo_name">
@@ -52,191 +75,20 @@ const Chatscreen = () => {
           <span> {time} </span>
         </div>
         <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
-          <span> {time} </span>
-          <BsCheck2All />
-        </div>
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> {time} </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>Sent Message</p>
+          <p>{input}</p>
           <span> {time} </span>
           <BsCheck2All />
         </div>
       </div>
       <div className="chat_input">
         <div className="chat_input-msg">
-          <input type="text" name="" placeholder="Your Message here!" id="" />
+          <input type="text" name="" onChange={(e) => setInput(e.target.value)} placeholder="Your Message here!" id="" />
+          <button hidden onClick={sendMessage} >Send msg</button>
           <MdAttachFile />
         </div>
-        <div className="chat_mic"><BsMic/></div>
-
-        
-        
+        <div className="chat_mic">
+          <BsMic />
+        </div>
       </div>
     </div>
   );

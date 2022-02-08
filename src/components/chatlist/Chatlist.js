@@ -33,66 +33,7 @@ const Chatlist = () => {
             time="04:00 pm"
             tick="x"
             />
-            <Chat 
-            username="Name Here"
-            message="Msg"
-            time="04:00 pm"
-            tick="x"
-            />
-            <Chat 
-            username="Name Here"
-            message="Msg"
-            time="04:00 pm"
-            tick="x"
-            />
-            <Chat 
-            username="Name Here"
-            message="Msg"
-            time="04:00 pm"
-            tick="x"
-            />
-            <Chat 
-            username="Name Here"
-            message="Msg"
-            time="04:00 pm"
-            tick="x"
-            />
-            <Chat 
-            username="Name Here"
-            message="Msg"
-            time="04:00 pm"
-            tick="x"
-            />
-            <Chat 
-            username="Name Here"
-            message="Msg"
-            time="04:00 pm"
-            tick="x"
-            />
-            <Chat 
-            username="Name Here"
-            message="Msg"
-            time="04:00 pm"
-            tick="x"
-            />
-            <Chat 
-            username="Name Here"
-            message="Msg"
-            time="04:00 pm"
-            tick="x"
-            />
-            <Chat 
-            username="Name Here"
-            message="Msg"
-            time="04:00 pm"
-            tick="x"
-            />
-            <Chat 
-            username="Name Here"
-            message="Msg"
-            time="04:00 pm"
-            tick="x"
-            />
+          
             
   </div>
   <div className="chatlist_chats-calls-mobile">
