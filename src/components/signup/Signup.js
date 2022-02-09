@@ -120,6 +120,8 @@ const Signup = () => {
             
           </div>
         </form>
+        <span>Already have an account</span>
+          <Link to="/login">Login Now</Link>
         </div>
       </div>
     </div>

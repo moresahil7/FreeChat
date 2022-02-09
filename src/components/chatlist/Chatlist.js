@@ -1,10 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import { BsSearch } from "react-icons/bs";
+import { BiLogOut } from "react-icons/bi";
 import Chat from "../../containers/chats/Chat"
 import profImg from "../../assets/bgimg.svg"
 import './chatlist.css'
+import {auth,db} from '../../Services/firebase'
+import { signOut } from "firebase/auth";
+import {updateDoc,doc  } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/Auth";
 
 const Chatlist = () => {
+
+    const {user} = useContext(AuthContext)
+
+
+    const navigate = useNavigate()
+
+
+
+
+    const handleSignout = async () =>{
+                await updateDoc(doc(db,"users", auth.currentUser.uid),{
+                    isOnline: false,
+                });
+                await signOut(auth);
+                navigate('/login');
+    }
   return (
     <div className="chatlist_container">
     
@@ -19,7 +41,22 @@ const Chatlist = () => {
                 <div className="chats-calls">
                     <p>Calls</p>
                 </div>
+                
             </div>
+
+            {
+                user ? (
+                    <div className="chats-calls" onClick={handleSignout} >
+                    <BiLogOut/>
+                        </div>
+                ):
+                <p></p>
+            }
+            
+               
+          
+          
+            
 
             <div className="chatlist_search">
                 <input type="search" name="" placeholder="Search" id="" />
