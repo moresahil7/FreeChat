@@ -18,7 +18,7 @@ const Routing = () => {
         <Route element={<PrivateRoute />} >
         <Route path="/chatlist" element={<Chatlist />} />
         </Route>
-        <Route path="/chatscreen" element={<Chatscreen />} />
+        <Route path="/chatscreen/:id" element={<Chatscreen />} />
       </Routes>
     </BrowserRouter>
     </AuthProvider>

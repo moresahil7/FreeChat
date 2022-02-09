@@ -3,7 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: 0 1rem;
+  margin: 1rem 1rem 2rem 1rem;
 }
 
 .user_img-name-msg {
@@ -29,6 +29,10 @@
   font-size: 15px;
   font-family: var(--font-family);
 }
+
+.user_name .link{
+  text-decoration: none;
+}
 .msg_time-ticks{
     display: flex;
     flex-direction: column;
@@ -43,4 +47,24 @@
 }
 .msg_ticks svg{
     margin: 0;
+}
+
+.status{
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+}
+
+.online{
+  height: 100%;
+  width: 100%;
+  color: blue;
+  border-radius: 50%;
+}
+.offline{
+  height: 100%;
+  width: 100%;
+  color: red;
+  border-radius: 50%;
+
 }

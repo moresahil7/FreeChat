@@ -56,6 +56,7 @@ const Login = () => {
       navigate("/chatlist");
     } catch (error) {
       setUser({ ...user, error: error.message });
+      alert(error.message)
     }
   };
   return (
@@ -95,16 +96,18 @@ const Login = () => {
                 <AiFillEyeInvisible onClick={togglePassword} />
               )}
             </div>
-            <div className="login_forgot ">
-              <Link to="/">Forgot Password?</Link>
-            </div>
+            {/*<div className="error ">
+            <p>Forgot Password?</p>
+              </div>*/}
             <div className="login_button">
               <input type="button" onClick={submit} value="Login" />
             </div>
           </form>
-          <p>{error}</p>
+          
+          <div className="signup_btn">
           <span>Not have an account </span>
-          <Link to="/">SignUp Now</Link>
+          <Link to="/" className="link">SignUp Now</Link>
+          </div>
         </div>
       </div>
     </div>

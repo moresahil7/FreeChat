@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { BiArrowBack } from "react-icons/bi";
 import {
   BsTelephone,
@@ -10,26 +10,63 @@ import {
 import { MdAttachFile } from "react-icons/md";
 import "./chatscreen.css";
 import profile from "../../assets/bgimg.svg";
-import { useNavigate } from "react-router-dom";
-
-
+import { useLocation, useNavigate,useParams } from "react-router-dom";
+import { addDoc, collection, onSnapshot, query, Timestamp, where } from "firebase/firestore";
+import { auth, db } from "../../Services/firebase";
 
 
 const Chatscreen = () => {
+  // const [users, setUsers] = useState([])
+
+  // const [message, setMessage] = useState("")
+
+  // const user1 = auth.currentUser.uid
+  // console.log("user1",user1);
 
 
-  const navigate = useNavigate();
-  const today = new Date();
-  const timing =
-    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-  const [time] = useState(timing);
-  const [input, setInput] = useState("");
+  // const uid = useParams();
+  // console.log("userid",uid);
+
+  // const location = useLocation();
+  // // console.log(location.state.from.name);
+
+  // const {from} = location.state
+  // // console.log(from.name)
 
 
-  const sendMessage = (e) =>{
-    e.preventDefault();
-    setInput("");
-  }
+  // const navigate = useNavigate();
+  // const today = new Date();
+
+  // const [input, setInput] = useState("");
+
+
+  // const sendMessage = (e) =>{
+  //   e.preventDefault();
+  //   setInput("");
+  // }
+
+  // const handleSubmit = async e =>{
+  //   e.preventDefault();
+
+  //   const user2 = uid;
+  //   const id = user1>user2 ? `$(user1+user2)` : `$(user2+user1)`;
+  //   await addDoc(collection(db,'messages',id,'chats'),{
+  //     message,
+  //     from: user1,
+  //     to: user2,
+  //     createdAt: Timestamp.fromDate(new Date())
+  //   })
+  //   setMessage("")
+    
+  // }
+
+
+
+
+
+
+
+
 
   
 
@@ -41,14 +78,14 @@ const Chatscreen = () => {
         <div className="chatscreen_back-btn chatscreen_btns">
           <BiArrowBack 
           onClick={() =>{
-            navigate('/chatlist')
+            // navigate('/chatlist')
           }}
           />
         </div>
 
         <div className="chatscreen_photo_name">
           <img src={profile} alt="" />
-          <p>Name Here</p>
+         {/* <p>{from.name}</p>*/}
         </div>
 
         <div className="chatscreen_call-btns">
@@ -72,18 +109,18 @@ const Chatscreen = () => {
       <div className="chatscreen_chats">
         <div className="chatscreen_recieved_msg">
           <p>Recieved Msg</p>
-          <span> {time} </span>
+          <span> time </span>
         </div>
         <div className="chatscreen_sent_msg">
-          <p>{input}</p>
-          <span> {time} </span>
+          <p>message</p>
+          <span> time </span>
           <BsCheck2All />
         </div>
       </div>
       <div className="chat_input">
         <div className="chat_input-msg">
-          <input type="text" name="" onChange={(e) => setInput(e.target.value)} placeholder="Your Message here!" id="" />
-          <button hidden onClick={sendMessage} >Send msg</button>
+          <input type="text" name=""  placeholder="Your Message here!" id="" />
+          <button hidden  >Send msg</button>
           <MdAttachFile />
         </div>
         <div className="chat_mic">
