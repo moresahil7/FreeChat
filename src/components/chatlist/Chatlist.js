@@ -5,17 +5,22 @@ import { BiLogOut } from "react-icons/bi";
 import Chat from "../../containers/chats/Chat";
 import profImg from "../../assets/bgimg.svg";
 import { auth, db } from "../../Services/firebase";
-import { signOut } from "firebase/auth";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import { updateDoc, doc,collection,query,where,onSnapshot } from "firebase/firestore";
 import { useNavigate,Link } from "react-router-dom";
 import { AuthContext } from "../../context/Auth";
 
+const Chatlist = () => {
 
 
 
-const Chatlist = ({navigation}) => {
     
     const [users, setUsers] = useState([])
+
+    const user1 = auth.currentUser.uid;
+
+    console.log(user1);
+
 
    useEffect(() => {
 
@@ -30,9 +35,8 @@ const Chatlist = ({navigation}) => {
         setUsers(allUsers)
     });
 
-    return () => {
-        unsub()
-    } 
+    return () => unsub();
+    
      
    }, []);
 //    console.log(users)
@@ -58,6 +62,8 @@ const Chatlist = ({navigation}) => {
 
 
   const navigate = useNavigate();
+
+  
 
   const handleSignout = async () => {
     await updateDoc(doc(db, "users", auth.currentUser.uid), {

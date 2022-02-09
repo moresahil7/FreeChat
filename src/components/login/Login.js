@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./login.css";
 
 const Login = () => {
+
   const navigate = useNavigate();
 
   const [user, setUser] = useState({

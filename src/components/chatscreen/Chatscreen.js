@@ -6,61 +6,70 @@ import {
   BsSearch,
   BsCheck2All,
   BsMic,
+  
 } from "react-icons/bs";
 import { MdAttachFile } from "react-icons/md";
 import "./chatscreen.css";
 import profile from "../../assets/bgimg.svg";
 import { useLocation, useNavigate,useParams } from "react-router-dom";
-import { addDoc, collection, onSnapshot, query, Timestamp, where } from "firebase/firestore";
+import { addDoc, collection, onSnapshot, orderBy, query, Timestamp, where } from "firebase/firestore";
 import { auth, db } from "../../Services/firebase";
+import Message from "../../containers/message/Message";
 
 
 const Chatscreen = () => {
-  // const [users, setUsers] = useState([])
 
-  // const [message, setMessage] = useState("")
+  console.log(auth.currentUser)
 
-  // const user1 = auth.currentUser.uid
-  // console.log("user1",user1);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const {from } = location.state;
+  const user1 = auth.currentUser.uid;
 
+  const user2 = from.uid;
 
-  // const uid = useParams();
-  // console.log("userid",uid);
+  // console.log(user2)
 
-  // const location = useLocation();
-  // // console.log(location.state.from.name);
+  // console.log(from.uid)
+  const [messages, setMessages] = useState("")
+  const [chat, setChat] = useState([])
+  const id = user1>user2 ? `${user1+user2}` : `${user2+user1}`
 
-  // const {from} = location.state
-  // // console.log(from.name)
-
-
-  // const navigate = useNavigate();
-  // const today = new Date();
-
-  // const [input, setInput] = useState("");
-
-
-  // const sendMessage = (e) =>{
-  //   e.preventDefault();
-  //   setInput("");
-  // }
-
-  // const handleSubmit = async e =>{
-  //   e.preventDefault();
-
-  //   const user2 = uid;
-  //   const id = user1>user2 ? `$(user1+user2)` : `$(user2+user1)`;
-  //   await addDoc(collection(db,'messages',id,'chats'),{
-  //     message,
-  //     from: user1,
-  //     to: user2,
-  //     createdAt: Timestamp.fromDate(new Date())
-  //   })
-  //   setMessage("")
+  useEffect(() => {
     
-  // }
+    const msgRef = collection(db,'messages',id,'chats');
+    const q = query(msgRef,orderBy('createdAt','asc'));
+    const unsub = onSnapshot(q,querySnapshot => {
+      const allChats = []
+      querySnapshot.forEach(doc=>{
+        allChats.push(doc.data())
+      })
+      setChat(allChats)
+      console.log(allChats)
+    });
+
+    return () => unsub();
+  
+   
+  }, [])
+  
 
 
+
+
+
+
+  const handleSubmit = async e=>{
+    e.preventDefault();
+    const id = user1>user2 ? `${user1+user2}` : `${user2+user1}`
+    await addDoc(collection(db, 'messages',id, 'chats'),{
+      messages,
+      from:user1,
+      to:user2,
+      createdAt: Timestamp.fromDate(new Date())
+    })
+    setMessages(" ");
+  }
 
 
 
@@ -78,14 +87,14 @@ const Chatscreen = () => {
         <div className="chatscreen_back-btn chatscreen_btns">
           <BiArrowBack 
           onClick={() =>{
-            // navigate('/chatlist')
+            navigate('/chatlist')
           }}
           />
         </div>
 
         <div className="chatscreen_photo_name">
           <img src={profile} alt="" />
-         {/* <p>{from.name}</p>*/}
+         <p>{from.name}</p>
         </div>
 
         <div className="chatscreen_call-btns">
@@ -107,21 +116,17 @@ const Chatscreen = () => {
         </div>
       </div>
       <div className="chatscreen_chats">
-        <div className="chatscreen_recieved_msg">
-          <p>Recieved Msg</p>
-          <span> time </span>
-        </div>
-        <div className="chatscreen_sent_msg">
-          <p>message</p>
-          <span> time </span>
-          <BsCheck2All />
-        </div>
+        {chat.length
+        ? chat.map((chats,index)=> <Message key = {index} chats = {chats} user1={user1} />):null
+        }
       </div>
       <div className="chat_input">
         <div className="chat_input-msg">
-          <input type="text" name=""  placeholder="Your Message here!" id="" />
+        <form action="" onSubmit={handleSubmit}>
+          <input type="text" value={messages} onChange={e => setMessages(e.target.value)} name=""  placeholder="Your Message here!" id="" />
           <button hidden  >Send msg</button>
           <MdAttachFile />
+          </form>
         </div>
         <div className="chat_mic">
           <BsMic />
