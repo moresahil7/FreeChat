@@ -5,9 +5,9 @@ import { BiLogOut } from "react-icons/bi";
 import Chat from "../../containers/chats/Chat";
 import profImg from "../../assets/bgimg.svg";
 import { auth, db } from "../../Services/firebase";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import {  signOut } from "firebase/auth";
 import { updateDoc, doc,collection,query,where,onSnapshot } from "firebase/firestore";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/Auth";
 
 const Chatlist = () => {
@@ -39,7 +39,6 @@ const Chatlist = () => {
     
      
    }, []);
-//    console.log(users)
    
     
 

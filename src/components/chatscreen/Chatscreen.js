@@ -4,22 +4,23 @@ import {
   BsTelephone,
   BsFillCameraVideoFill,
   BsSearch,
-  BsCheck2All,
   BsMic,
   
 } from "react-icons/bs";
 import { MdAttachFile } from "react-icons/md";
 import "./chatscreen.css";
 import profile from "../../assets/bgimg.svg";
-import { useLocation, useNavigate,useParams } from "react-router-dom";
-import { addDoc, collection, onSnapshot, orderBy, query, Timestamp, where } from "firebase/firestore";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { addDoc, collection, onSnapshot, orderBy, query, Timestamp } from "firebase/firestore";
 import { auth, db } from "../../Services/firebase";
 import Message from "../../containers/message/Message";
+import {App} from "../videocall/video"
+
 
 
 const Chatscreen = () => {
 
-  console.log(auth.currentUser)
+  // console.log(auth.currentUser)
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -103,7 +104,9 @@ const Chatscreen = () => {
           </div>
 
           <div className="chatscreen_btns">
-            <BsFillCameraVideoFill />
+          <Link to={"/video"} className="chatscreen_btns">
+          <BsFillCameraVideoFill />
+          </Link>  
           </div>
           <div className="chatscreen_p chatscreen_btns">
             <p>Tele</p>

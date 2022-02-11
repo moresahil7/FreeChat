@@ -6,6 +6,7 @@ import Chatlist from "./components/chatlist/Chatlist";
 import Chatscreen from "./components/chatscreen/Chatscreen";
 import AuthProvider from "./context/Auth";
 import PrivateRoute from "./PrivateRoute";
+import Video from "./components/videocall/video";
 
 const Routing = () => {
 
@@ -18,8 +19,9 @@ const Routing = () => {
         <Route element={<PrivateRoute />} >
         <Route path="/chatlist" element={<Chatlist />} />
         <Route path="/chatscreen/:uid" element={<Chatscreen />} />
-
+        <Route path="/video" element={<Video />} />
         </Route>
+
 
       </Routes>
     </BrowserRouter>
