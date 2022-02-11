@@ -57,17 +57,12 @@ const Signup = () => {
       navigate("/login");
     } catch (error) {
       setUser({ ...user, error: error.message });
-      alert(error.message)
+      alert(error.message);
     }
   };
 
-  
-
-
-
   return (
     <div className="signup_container">
-     
       <div className="signup_container-box">
         <div className="signup_icon">
           <p>Tele</p>
@@ -80,6 +75,7 @@ const Signup = () => {
           <form action="" onSubmit={submit}>
             <div className="signup_credentials-username">
               <input
+                // className="input"
                 type="text"
                 name="name"
                 value={name}
@@ -113,24 +109,22 @@ const Signup = () => {
                 <AiFillEyeInvisible onClick={togglePassword} />
               )}
             </div>
-           
-            
+
             <div className="signup_button">
               <input type="button" onClick={submit} value="Signup" />
             </div>
-            
           </form>
           {/*<div className="error">
             <p>{error}</p>
               </div> */}
           <div className="login_btn">
-              <span>Already have an account</span>
-              <Link to="/login" className="link" >Login Now</Link>
+            <span>Already have an account</span>
+            <Link to="/login" className="link">
+              Login Now
+            </Link>
           </div>
         </div>
-        
       </div>
-     
     </div>
   );
 };
